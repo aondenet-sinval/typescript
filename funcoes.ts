@@ -102,7 +102,7 @@ function addNumbersParam (x: number, y: number): number {
 
 console.log(addNumbersParam(1, 2)); // Returns 3
 //console.log(addNumbersParam(2));// Retorna um erro pois faltou um parametro
-*/
+
 //-- Parametros opcionais 
 //acrescenta (?) no final do nome do segundo parametro
 //ou acrescenta (?) no final do nome do parametro único
@@ -118,6 +118,84 @@ function addNumbersParam3 (y?: number): number {
 }
 
 console.log(addNumbersParam3()); // Retorna undefined, pois é opcional
-//NOTA: parametros opcionais são aceitáveis somente a partir do segundo
+//NOTA: parametros opcionais são aceitáveis somente a partir do último
 //Ou no primeiro em caso de parametro único.
 
+//----
+//Outros exemplos de uso de parametros:
+let addThreeNumbersParam4 = (x: number, y: number, z: number): number => x + y + z;
+//Ao descomentar um erro será retornado falta do parametro z:
+//console.log(addThreeNumbersParam4(10, 20));
+//Parametros corretos sendo passados: 3 parametros obrigatórios
+console.log(addThreeNumbersParam4(3, 2,40));
+//Parametros incorretos sendo passados: 3 parametros obrigatórios passados 4 dá erro
+//console.log(addThreeNumbersParam4(3, 2,40,5));
+
+//Variando o código para receber pelo menos um parametro:
+//Tratando a função e preparando para receber um parametro:
+let addThreeNumbersParam5 = (x: number, y?: number, z?: number): number => {
+    if(y === undefined) {
+        return x;
+    }
+    if(z === undefined) {
+        return x + y;
+    } else {
+        return x + y + z;
+    }
+};
+console.log(addThreeNumbersParam5(8));
+//NOTA: se a função obtiver retorno NaN modifique a preferencia dos parametros no if
+
+//Usando um/ou mais valor(es) de parametro padrão:
+let subtractThreeNumbers = (x: number, y: number, z = 100): number => x - y - z;
+console.log(subtractThreeNumbers(10, 20));//retorna -110 visto que z possue o valor 100
+console.log(subtractThreeNumbers(10, 20, 15));   //retorna -25 pois o valor padrão foi substituído
+let addThreeNumbers = (x: number, y: number, z = 100): number => x + y + z;
+console.log(addThreeNumbers(10, 20));//retorna 130 visto que z possue o valor 100
+console.log(addThreeNumbers(10, 20, 15));   // retorna 45 pois o valor padrão foi substituído.
+let addThreeNumbers2 = (x: number, y = 0, z = 0): number => x + y + z;
+console.log(addThreeNumbers2(10, 20));//retorna 30 visto que z possue o valor 0
+console.log(addThreeNumbers2(10, 20, 15));   // retorna 45 pois o valor padrão foi substituído.
+console.log(addThreeNumbers2(10));   // retorna 45 pois o valor padrão foi substituído.
+//NOTA: observe que parametros padronizados se tornam parametros opcionais 
+//e não interferem no valor retornado desde que possuam valor 0. Tá safo?
+*/
+//-----------------------------------------------
+//Trabalhando com definição de tipos de função:
+//-----------------------------------------------
+//Usando alias de tipo:
+/*
+type calcular = (x: number, y: number) => number;//assinado o tipo calcular como number
+let addNumbers: calcular = (x: number, y: number): number => x + y;
+let subtractNumbers: calcular = (x: number, y: number): number => x - y;
+//console.log(addNumbers(1, 2));
+//console.log(subtractNumbers(1, 2));
+let doCalc = (operation: 'add' | 'subtract'): calcular => {
+    if (operation === 'add') {
+        return addNumbers;
+    } else {
+        return subtractNumbers;
+    }
+}
+console.log(doCalc('subtract')(1, 2));
+
+//-----------------------------------------------
+//Trabalhando com definição de tipos de função:
+//-----------------------------------------------
+//Usando interface:
+interface CalcNumbers {
+    (x: number, y: number): number;
+}
+let addNumbers: CalcNumbers = (x: number, y: number): number => x + y;
+//A instrução addNumbers2 traz o mesmo resultado de addNumbers acima
+let addNumbers2: CalcNumbers = (num1, num2) => num1 + num2;
+let subtractNumbers: CalcNumbers = (x: number, y: number): number => x - y;
+let doCalcInt = (operation: 'add' | 'subtract'): CalcNumbers => {
+    if (operation === 'add') {
+        return addNumbers;
+    } else {
+        return subtractNumbers;
+    }
+}
+console.log(doCalcInt('add')(1, 2));
+*/
