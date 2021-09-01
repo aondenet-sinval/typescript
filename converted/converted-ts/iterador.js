@@ -1,0 +1,17 @@
+var makeIterator = function (array) {
+    var nextIndex = 0;
+    return {
+        next: function () {
+            return nextIndex < array.length ?
+                { value: array[nextIndex++], done: false } :
+                { done: true };
+        }
+    };
+};
+var arr = ['yo', 'ya', 'yb', 'yc'];
+var it = makeIterator(arr);
+console.log(it.next().value); // 'yo'
+console.log(it.next().value); // 'ya
+console.log(it.next().value); // 'yo'
+console.log(it.next().value); // 'ya'
+console.log(it.next().done); // true
