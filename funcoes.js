@@ -37,7 +37,7 @@ console.log(addNumbers1(30,4));
 //-----------------------------------------------
 //Arrow function:
 //-----------------------------------------------
-//Diferenças da anônima: 
+//Diferenças da anônima:
 //permite omissão de chaves e retorno implícito, se usada em uma linha
 let addNumbers2 = (x: number, y: number): number => x + y;
 console.log(addNumbers2(3,4));
@@ -77,7 +77,7 @@ alert(sum([5]));
 
 //---
 //Função nomeada tipada com matriz de valores
-function sum2(input: number[]): number {        
+function sum2(input: number[]): number {
     let total: number =  0;
     for(let count = 0; count < input.length; count++) {
         if(isNaN(input[count])){
@@ -106,18 +106,12 @@ console.log(addNumbersParam(1, 2)); // Returns 3
 //-- Parametros opcionais 
 //acrescenta (?) no final do nome do segundo parametro
 //ou acrescenta (?) no final do nome do parametro único
-function addNumbersParam2 (x: number, y?: number): number {
-   return x + y;
+function addNumbersParam2(x, y) {
+    return x + y;
 }
-
 console.log(addNumbersParam2(1, 2)); // Returns 3
 //console.log(addNumbersParam2(1));    // Returns 1
-
-function addNumbersParam3 (y?: number): number {
-   return y;
+function addNumbersParam3(y) {
+    return y;
 }
-
-console.log(addNumbersParam3()); // Retorna undefined, pois é opcional
-//NOTA: parametros opcionais são aceitáveis somente a partir do segundo
-//Ou no primeiro em caso de parametro único.
-
+console.log(addNumbersParam3()); // Returns 3
