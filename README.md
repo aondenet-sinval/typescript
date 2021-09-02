@@ -6,6 +6,8 @@
 
 **Codificação menos sujeita a erros.**
 
+**Codificação adaptável a navegadores mais antigos.**
+
 # Cada arquivo aqui corresponde:
 
 Uso de tipos => tipos.ts => tipos.js
